@@ -1,0 +1,7 @@
+{
+  "name": "simple-chat-client",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

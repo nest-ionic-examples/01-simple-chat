@@ -1,0 +1,47 @@
+== Nest Application
+
+This tutorial starts with the actual backend for our app. It’s good to have some Node skills so you could potentially build your own little backend from time to time. First of all we create a new http://docs.nestjs.com/[NestJs] app for our backend:
+
+
+[source,sh,options="nowrap"]
+----
+nest new simple-chat-api && cd simple-chat-api
+----
+
+then install `@nestjs/websockets`:
+
+[source,sh,options="nowrap"]
+----
+npm i @nestjs/websockets`
+----
+
+All of our functions are wrapped inside a gateway class, which only listen for events once a client connects to the server.
+
+We listen for `set-nickname` and `add-message` and whenever our clients sends out these events the server does something.
+
+If our clients send a new message, the server emit that message to everyone connected as a new object with text, the name of the sending user and a date. Also, we set the name of the socket connection if a users send his nickname.
+
+Finally if a user disconnects, we inform everyone that somebody just left the room. To do all that we need to generate `gateways/messages.js`:
+
+[source,sh,options="nowrap"]
+----
+nest g ga gateways/messages
+----
+
+then open `src/gateways/messages/messages.gateway.ts` and change it for next code:
+
+[source,ts,options="nowrap"]
+----
+include::src/gateways/messages/messages.gateway.ts[]
+----
+<1> set a function for handle disconnect events which is implemented because of `OnGatewayDisconnect` interface.
+<2> set subscriber for `set-nickname` event.
+<3> use `client.server.emit` to broadcast value to all clients
+<4> set subscriber for `add-message` event.
+
+Your NestJs backend with Socket.io is now ready! You can start it by running the command below and you should be able to reach it at http://localhost:3000
+
+[source,sh,options="nowrap"]
+----
+npm start:dev
+----

@@ -1,0 +1,132 @@
+== Ionic Application
+
+Inside our Ionic chat app we need 2 screens: On the first screen we will pick a name and *join the chat*, on the second screen is the actual *chatroom with messages.*
+
+First of all we create a blank new Ionic app and install the https://github.com/bougarfaoui/ng-socket-io[ng-socket-io] package to easily connect to our Socket backend, so go ahead and run:
+
+[source,sh,options="nowrap"]
+----
+ionic start simple-chat-client blank --type=angular
+cd simple-chat-client
+----
+
+then start the web-app running:
+
+[source,sh,options="nowrap"]
+----
+npm run start
+----
+once app starts, navigate to: http://localhost:4200
+
+then we need to add `ng-socket-io` and `rxjs-compat` dependencies, so run:
+
+[source,sh,options="nowrap"]
+----
+npm i -s ng-socket-io rxjs-compat
+----
+
+to avoid next error emitted by `ng-socket-io` library
+
+----
+Uncaught ReferenceError: global is not defined
+----
+
+we need to add `global` to the `window` variable adding next line to `src/polyfiles.ts`:
+
+[source,ts,options="nowrap"]
+----
+include::src/polyfills.ts[tag=window-global]
+----
+
+Now setup the `socket-io` configuration in the `environments/environment.ts` and `environments/environment.prod.ts` files changing then to next code to add the backend url:
+
+[source,ts,options="nowrap"]
+----
+include::src/environments/environment.ts[tag=environment-variable]
+----
+<1> SocketIO configuration
+<2> backend url
+
+Now make sure to add `ng-socket-io` package to our `src/app/app.module.ts` and pass in the `socket-io` configuration:
+
+[source,ts,options="nowrap"]
+----
+include::src/app/app.module.ts[]
+----
+<1> import package `ng-socket-io`
+<2> import `environment` configuration
+<3> add `SocketIoModule` to imports
+
+Your app is now configured to use the backend, so make sure to run the backend when launching your app!
+
+=== Joining a Chatroom
+
+Before continue adding more pages to the project I just prefer to have all of them inside a `pages` folder. So that, move `src/app/home` directory to `src/app/pages/home` then open `src/app/app-routing.module.ts` and change path of `home` page as fallow:
+
+[source,ts,options="nowrap"]
+----
+include::src/app/app-routing.module.ts[tag=home-route]
+----
+
+After that a user needs to pick a name to join a chatroom. This is just an example so we can actually show who wrote which message, so our view consists of the input field and a button to join the chat. Open your `src/app/pages/home/home.html` and change it to:
+
+[source,html,options="nowrap"]
+----
+include::src/app/pages/home/home.page.html[]
+----
+
+Inside the class for this view we have the first interaction with Socket. Once we click to join a chat, we need to call `connect()` so the server recognises a new connection. Then we emit the first message to the server which is to set our nickname.
+
+Once both of this happened we push the next page which is our chatroom, go ahead and change your `src/app/pages/home/home.ts` to:
+
+[source,ts,options="nowrap"]
+----
+include::src/app/pages/home/home.page.ts[]
+----
+If you put in some logs you should now already receive a connection and the event on the server-side, but we haven’t added the actual chat functionality so let’s do this.
+
+=== Building the Chat functionality
+
+To receive new chat messages inside the room we have to listen for `message` socket event which receive the messages from the server.
+
+Whenever we get such a message we simply push the new message to an array of messages. Remember, we are *not loading historic data*, we will only get messages that come after we are connected!
+
+Sending a new message is almost the same like setting a nickname before, we simply emit our event to the server with the right type.
+
+Finally, we also listen to the events of users joining and leaving the room and display a little toast whenever someone comes in or leaves the room. It’s the same logic again, with the `socket.on()` we can listen to all the events broadcasted from our server!
+
+Go ahead and generate `pages/chat-room`:
+
+[source,sh,options="nowrap"]
+----
+ionic g page pages/chat-room
+----
+
+then change your `src/app/pages/chat-room/chat-room.page.ts` to:
+
+[source,ts,options="nowrap"]
+----
+include::src/app/pages/chat-room/chat-room.page.ts[]
+----
+
+The last missing part is now the view for the chatroom. We have to iterate over all of our messages and distinguish if the message was from us or another user. Therefore, we create 2 different `ion-col` blocks as we want our messages to have some offset to a side. We could also do this only with CSS but I like using the Ionic grid for styling as far as possible.
+
+With some additional styling added to both our and other people’s messages the chatroom will look almost like iMessages or any familiar chat application, so open your `src/app/pages/chat-room/chat-room.page.html` and insert:
+
+[source,html,options="nowrap"]
+----
+include::src/app/pages/chat-room/chat-room.page.html[]
+----
+
+Below our messages we also have the footer bar which holds another input to send out messages, nothing really fancy.
+
+To make the chat finally look like a chat, add some more CSS to your `src/app/pages/chat-room/chat-room.page.scss`:
+
+[source,scss,options="nowrap"]
+----
+include::src/app/pages/chat-room/chat-room.page.scss[]
+----
+
+Now launch your app and make sure your backend is up and running!
+
+For testing, you can open a browser and another incognito browser like in my example at the top to chat with yourself.
