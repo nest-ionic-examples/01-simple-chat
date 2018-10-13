@@ -6,8 +6,8 @@ First of all we create a blank new Ionic app and install the https://github.com/
 
 [source,sh,options="nowrap"]
 ----
-ionic start simple-chat-client blank --type=angular
-cd simple-chat-client
+ionic start chat-client blank --type=angular
+cd chat-client
 ----
 
 then start the web-app running:

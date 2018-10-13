@@ -1,7 +1,7 @@
 {
-  "name": "simple-chat-api",
+  "name": "chat-api",
   "version": "0.0.0",
-  "description": "Simple Chat Api",
+  "description": "Chat Api",
   "author": "Luis Vargas",
   "license": "MIT",
   "scripts": {

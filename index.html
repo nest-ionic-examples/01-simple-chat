@@ -438,11 +438,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
-<p><a href="https://nest-ionic-examples.github.io/01-simple-chat/" class="bare">https://nest-ionic-examples.github.io/01-simple-chat/</a></p>
+<p>documentation: <a href="https://nest-ionic-examples.github.io/01-simple-chat/" class="bare">https://nest-ionic-examples.github.io/01-simple-chat/</a></p>
 </div>
 <div class="paragraph">
 <p>source code: <a href="https://github.com/nest-ionic-examples/01-simple-chat" class="bare">https://github.com/nest-ionic-examples/01-simple-chat</a></p>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>There are many ways to build a chat application with Ionic. You could use Firebase as a realtime database, or you can use your own Node server with some Socket.io, and that’s what we gonna do today to build a realtime <strong>Ionic Chat!</strong></p>
@@ -468,7 +472,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-sh hljs" data-lang="sh">nest new simple-chat-api &amp;&amp; cd simple-chat-api</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-sh hljs" data-lang="sh">nest new chat-api &amp;&amp; cd chat-api</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -568,8 +572,8 @@ export class MessagesGateway implements OnGatewayDisconnect {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-sh hljs" data-lang="sh">ionic start simple-chat-client blank --type=angular
-cd simple-chat-client</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-sh hljs" data-lang="sh">ionic start chat-client blank --type=angular
+cd chat-client</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -955,6 +959,11 @@ export class ChatRoomPage implements OnInit {
 <div class="paragraph">
 <p>To make this a real Ionic chat you might want to add a database and store all the messages once you receive them and add some routes to return the history of a chatroom. Or you might want to create different chatrooms and separate conversations, but this post could be the starting point to your own chat implementation!</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_comments">Comments</h2>
+<div class="sectionbody">
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {

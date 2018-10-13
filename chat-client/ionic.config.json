@@ -1,5 +1,5 @@
 {
-  "name": "simple-chat-client",
+  "name": "chat-client",
   "integrations": {
     "cordova": {}
   },

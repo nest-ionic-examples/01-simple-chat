@@ -4,9 +4,11 @@
 :nofooter:
 :icons: font
 
-https://nest-ionic-examples.github.io/01-simple-chat/
+****
+documentation: https://nest-ionic-examples.github.io/01-simple-chat/
 
 source code: https://github.com/nest-ionic-examples/01-simple-chat
+****
 
 There are many ways to build a chat application with Ionic. You could use Firebase as a realtime database, or you can use your own Node server with some Socket.io, and that’s what we gonna do today to build a realtime *Ionic Chat!*
 
@@ -16,15 +18,17 @@ This is a super lightweight example as we don’t store any of the messages on t
 
 image::chats-demo.gif[]
 
-include::simple-chat-api/README.adoc[]
+include::chat-api/README.adoc[]
 
-include::simple-chat-client/README.adoc[]
+include::chat-client/README.adoc[]
 
 == Conclusion
 
 Don’t be scared of Socket.io and a NestJs backend, you can easily implement your own realtime backend connection without any problems! Firebase seems often like the easy alternative, but actually we were able to build a live chat app with only a super small backend.
 
 To make this a real Ionic chat you might want to add a database and store all the messages once you receive them and add some routes to return the history of a chatroom. Or you might want to create different chatrooms and separate conversations, but this post could be the starting point to your own chat implementation!
+
+== Comments
 
 ++++
 <div id="disqus_thread"></div>

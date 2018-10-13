@@ -5,7 +5,7 @@ This tutorial starts with the actual backend for our app. It’s good to have so
 
 [source,sh,options="nowrap"]
 ----
-nest new simple-chat-api && cd simple-chat-api
+nest new chat-api && cd chat-api
 ----
 
 then install `@nestjs/websockets`:
