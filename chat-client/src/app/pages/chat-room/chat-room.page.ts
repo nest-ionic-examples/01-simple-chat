@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Socket } from 'ng-socket-io';
-import { Observable } from 'rxjs';
+import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +8,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './chat-room.page.html',
   styleUrls: ['./chat-room.page.scss'],
 })
-export class ChatRoomPage implements OnInit {
+export class ChatRoomPage implements OnInit, OnDestroy {
   messages = [];
   nickname = '';
   message = '';
@@ -39,7 +38,7 @@ export class ChatRoomPage implements OnInit {
     this.message = '';
   }
 
-  ionViewWillLeave() {
+  ngOnDestroy() {
     this.socket.disconnect();
   }
 
