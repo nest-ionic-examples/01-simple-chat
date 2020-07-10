@@ -8,11 +8,12 @@ This tutorial starts with the actual backend for our app. It’s good to have so
 nest new chat-api && cd chat-api
 ----
 
-then install `@nestjs/websockets`:
+then install `@nestjs/platform-sockets.io` and `@types/socket.io`:
 
 [source,sh,options="nowrap"]
 ----
-npm i @nestjs/websockets`
+npm i @nestjs/platform-sockets.io
+npm i -D @types/sockets.io
 ----
 
 All of our functions are wrapped inside a gateway class, which only listen for events once a client connects to the server.
@@ -21,7 +22,7 @@ We listen for `set-nickname` and `add-message` and whenever our clients sends ou
 
 If our clients send a new message, the server emit that message to everyone connected as a new object with text, the name of the sending user and a date. Also, we set the name of the socket connection if a users send his nickname.
 
-Finally if a user disconnects, we inform everyone that somebody just left the room. To do all that we need to generate `gateways/messages.js`:
+Finally, if a user disconnects, we inform everyone that somebody just left the room. To do all that we need to generate `gateways/messages.js`:
 
 [source,sh,options="nowrap"]
 ----

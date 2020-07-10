@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ChatRoomPage } from './chat-room.page';
+import { ChatRoomPageRoutingModule } from './chat-room-routing.module';
 
-const routes: Routes = [
-  {
-    path: ':nickname',
-    component: ChatRoomPage
-  }
-];
+import { ChatRoomPage } from './chat-room.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    ChatRoomPageRoutingModule
   ],
   declarations: [ChatRoomPage]
 })

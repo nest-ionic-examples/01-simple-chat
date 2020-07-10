@@ -18,24 +18,11 @@ npm run start
 ----
 once app starts, navigate to: http://localhost:4200
 
-then we need to add `ng-socket-io` and `rxjs-compat` dependencies, so run:
+then we need to add `ngx-socket-io` and `rxjs-compat` dependencies, so run:
 
 [source,sh,options="nowrap"]
 ----
-npm i -s ng-socket-io rxjs-compat
-----
-
-to avoid next error emitted by `ng-socket-io` library
-
-----
-Uncaught ReferenceError: global is not defined
-----
-
-we need to add `global` to the `window` variable adding next line to `src/polyfiles.ts`:
-
-[source,ts,options="nowrap"]
-----
-include::src/polyfills.ts[tag=window-global]
+npm i -s ngx-socket-io rxjs-compat
 ----
 
 Now setup the `socket-io` configuration in the `environments/environment.ts` and `environments/environment.prod.ts` files changing then to next code to add the backend url:
@@ -53,7 +40,7 @@ Now make sure to add `ng-socket-io` package to our `src/app/app.module.ts` and p
 ----
 include::src/app/app.module.ts[]
 ----
-<1> import package `ng-socket-io`
+<1> import package `ngx-socket-io`
 <2> import `environment` configuration
 <3> add `SocketIoModule` to imports
 
@@ -101,6 +88,14 @@ Go ahead and generate `pages/chat-room`:
 ----
 ionic g page pages/chat-room
 ----
+
+then modify the path of the `chat-room` page in `chat-room/chat-room-routing.module.ts` to:
+
+[source,ts,options="nowrap"]
+----
+include::src/app/pages/chat-room/chat-room-routing.module.ts[]
+----
+<1> The path takes `:nickname` as parameter
 
 then change your `src/app/pages/chat-room/chat-room.page.ts` to:
 

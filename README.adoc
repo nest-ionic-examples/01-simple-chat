@@ -5,8 +5,6 @@
 :icons: font
 
 ****
-documentation: https://nest-ionic-examples.github.io/01-simple-chat/
-
 source code: https://github.com/nest-ionic-examples/01-simple-chat
 ****
 
