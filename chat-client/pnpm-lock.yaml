@@ -262,6 +262,7 @@ packages:
       - bluebird
       - bufferutil
       - chokidar
+      - debug
       - fibers
       - html-webpack-plugin
       - node-sass
@@ -2082,7 +2083,7 @@ packages:
     peerDependencies:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2093,7 +2094,7 @@ packages:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
       '@ionic-native/core': 5.36.0(rxjs@6.6.0)
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2104,7 +2105,7 @@ packages:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
       '@ionic-native/core': 5.36.0(rxjs@6.6.0)
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2460,8 +2461,8 @@ packages:
   /@types/cookie@0.4.1:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
 
-  /@types/cordova@11.0.1:
-    resolution: {integrity: sha512-Zd6LAhYUAdn0mL0SbxHeF4fO/3uzkcW3fzE0ZIK1wDlTRCWlI4/0i+Phb+otP9ryziyeW2LKofRNSP5yil85hA==}
+  /@types/cordova@11.0.3:
+    resolution: {integrity: sha512-kyuRQ40/NWQVhqGIHq78Ehu2Bf9Mlg0LhmSmis6ZFJK7z933FRfYi8tHe/k/0fB+PGfCf95rJC6TO7dopaFvAg==}
     dev: false
 
   /@types/cors@2.8.12:
@@ -5096,9 +5097,14 @@ packages:
     resolution: {integrity: sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==}
     dev: true
 
-  /follow-redirects@1.12.1:
-    resolution: {integrity: sha512-tmRv0AVuR7ZyouUHLeNSiO6pqulF7dYa3s19c6t+wz9LD69/uSzdMxJ2S91nTI9U3rt/IldxpzMOFejp6f0hjg==}
+  /follow-redirects@1.15.4:
+    resolution: {integrity: sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==}
     engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
     dev: true
 
   /forever-agent@0.6.1:
@@ -5560,6 +5566,8 @@ packages:
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.5
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /http-proxy@1.18.1:
@@ -5567,8 +5575,10 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.4
-      follow-redirects: 1.12.1
+      follow-redirects: 1.15.4
       requires-port: 1.0.0
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /http-signature@1.2.0:
@@ -6339,6 +6349,7 @@ packages:
       yargs: 16.2.0
     transitivePeerDependencies:
       - bufferutil
+      - debug
       - supports-color
       - utf-8-validate
     dev: true
@@ -9522,6 +9533,7 @@ packages:
       ws: 8.8.1
     transitivePeerDependencies:
       - bufferutil
+      - debug
       - supports-color
       - utf-8-validate
     dev: true
