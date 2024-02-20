@@ -2082,7 +2082,7 @@ packages:
     peerDependencies:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2093,7 +2093,7 @@ packages:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
       '@ionic-native/core': 5.36.0(rxjs@6.6.0)
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2104,7 +2104,7 @@ packages:
       rxjs: ^5.5.0 || ^6.5.0
     dependencies:
       '@ionic-native/core': 5.36.0(rxjs@6.6.0)
-      '@types/cordova': 11.0.1
+      '@types/cordova': 11.0.3
       rxjs: 6.6.0
     dev: false
 
@@ -2460,8 +2460,8 @@ packages:
   /@types/cookie@0.4.1:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
 
-  /@types/cordova@11.0.1:
-    resolution: {integrity: sha512-Zd6LAhYUAdn0mL0SbxHeF4fO/3uzkcW3fzE0ZIK1wDlTRCWlI4/0i+Phb+otP9ryziyeW2LKofRNSP5yil85hA==}
+  /@types/cordova@11.0.3:
+    resolution: {integrity: sha512-kyuRQ40/NWQVhqGIHq78Ehu2Bf9Mlg0LhmSmis6ZFJK7z933FRfYi8tHe/k/0fB+PGfCf95rJC6TO7dopaFvAg==}
     dev: false
 
   /@types/cors@2.8.12:
@@ -5762,8 +5762,8 @@ packages:
       '@stencil/core': 2.16.1
     dev: false
 
-  /ip@2.0.0:
-    resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}
+  /ip@2.0.1:
+    resolution: {integrity: sha512-lJUL9imLTNi1ZfXT+DU6rBBdbiKGBuay9B6xGSPVjUeQwaH1RIGqef8RZkUtHioLmSNpPR5M4HVKJGm1j8FWVQ==}
     dev: true
 
   /ipaddr.js@1.9.1:
@@ -6399,8 +6399,6 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
-        optional: true
-      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.73.0(esbuild@0.14.49)
@@ -8715,7 +8713,7 @@ packages:
     resolution: {integrity: sha512-scnOe9y4VuiNUULJN72GrM26BNOjVsfPXI+j+98PkyEfsIXroa5ofyjT+FzGvn/xHs73U2JtoBYAVx9Hl4quSA==}
     engines: {node: '>= 10.13.0', npm: '>= 3.0.0'}
     dependencies:
-      ip: 2.0.0
+      ip: 2.0.1
       smart-buffer: 4.2.0
     dev: true
 
